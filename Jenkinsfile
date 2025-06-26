@@ -1,15 +1,10 @@
 pipeline {
-    agent {
-        docker {
-            image 'mcr.microsoft.com/dotnet/sdk:8.0'
-            args '-u root:root'
-        }
-    }
+    agent any
     stages {
-        stage('Build') {
+        stage('Build') { 
             steps {
-                sh 'dotnet --version'
-                sh 'dotnet restore'
+                sh 'dotnet restore' 
+                sh 'dotnet build --no-restore' 
             }
         }
     }
